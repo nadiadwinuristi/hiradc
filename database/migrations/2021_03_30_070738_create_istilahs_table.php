@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKemungkinansTable extends Migration
+class CreateIstilahsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateKemungkinansTable extends Migration
      */
     public function up()
     {
-        Schema::create('kemungkinan', function (Blueprint $table) {
+        Schema::create('istilah', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama', 100);
-            $table->string('nilai', 100);
-            $table->string('keterangan', 255);
+            $table->string('kode', 200);
+            $table->string('istilah', 200);
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateKemungkinansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kemungkinan');
+        Schema::dropIfExists('istilah');
     }
 }

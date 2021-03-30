@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\kegiatan;
 
 use Illuminate\Http\Request;
+use App\kemungkinan;
 
-class kegiatanController extends Controller
+class kemungkinanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class kegiatanController extends Controller
      */
     public function index()
     {
-        $dtkegiatan = kegiatan::paginate(3);
-        return view('kegiatan.data-kegiatan',compact('dtkegiatan'));
+        $dtkemungkinan = kemungkinan::paginate(5);
+        return view('kemungkinan.data-kemungkinan',compact('dtkemungkinan'));
     }
 
     /**
@@ -25,7 +25,7 @@ class kegiatanController extends Controller
      */
     public function create()
     {
-        return view('kegiatan.create-kegiatan');
+        return view('kemungkinan.create-kemungkinan');
     }
 
     /**
@@ -36,12 +36,14 @@ class kegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        kegiatan::create([
+        kemungkinan::create([
 
-            'kegiatan' => $request ->kegiatan,
+            'nama' => $request ->nama,
+            'nilai' => $request ->nilai,
+            'keterangan' => $request ->keterangan,
 
         ]);
-        return redirect('data-kegiatan');
+        return redirect('data-kemungkinan');
     }
 
     /**
@@ -63,8 +65,8 @@ class kegiatanController extends Controller
      */
     public function edit($id)
     {
-        $keg = kegiatan::findorfail($id);
-        return view('kegiatan.edit-kegiatan',compact('keg'));
+        $kem = kemungkinan::findorfail($id);
+        return view('kemungkinan.edit-kemungkinan',compact('kem'));
     }
 
     /**
@@ -76,9 +78,9 @@ class kegiatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $keg = kegiatan::findorfail($id);
-        $keg->update($request->all());
-        return redirect('data-kegiatan');
+        $kem = kemungkinan::findorfail($id);
+        $kem->update($request->all());
+        return redirect('data-kemungkinan');
     }
 
     /**
@@ -89,8 +91,8 @@ class kegiatanController extends Controller
      */
     public function destroy($id)
     {
-        $keg = kegiatan::findorfail($id);
-        $keg->delete();
+        $kem = kemungkinan::findorfail($id);
+        $kem->delete();
         return back();
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\kegiatan;
 
 use Illuminate\Http\Request;
-
-class kegiatanController extends Controller
+use\App\kondisi;
+use\App\kategori;
+class kondisiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class kegiatanController extends Controller
      */
     public function index()
     {
-        $dtkegiatan = kegiatan::paginate(3);
-        return view('kegiatan.data-kegiatan',compact('dtkegiatan'));
+        $dtkondisi = kondisi::with('kategori')->latest()->paginate(5);
+        return view('kondisi.data-kondisi',compact('dtkondisi'));
     }
 
     /**
@@ -25,7 +25,8 @@ class kegiatanController extends Controller
      */
     public function create()
     {
-        return view('kegiatan.create-kegiatan');
+        $ktg= kategori::all();
+        return view('kondisi.create-kondisi',compact('ktg'));
     }
 
     /**
@@ -36,12 +37,12 @@ class kegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        kegiatan::create([
-
-            'kegiatan' => $request ->kegiatan,
+        kondisi::create([
+            'kategori_id' => $request->kategori_id,
+            'kondisi' => $request->kondisi,
 
         ]);
-        return redirect('data-kegiatan');
+        return redirect('data-kondisi');
     }
 
     /**
@@ -63,8 +64,9 @@ class kegiatanController extends Controller
      */
     public function edit($id)
     {
-        $keg = kegiatan::findorfail($id);
-        return view('kegiatan.edit-kegiatan',compact('keg'));
+        $ktg = kategori::all();
+        $kon = kondisi::with('kategori')->findorfail($id);
+        return view('kondisi.edit-kondisi',compact('kon','ktg'));
     }
 
     /**
@@ -76,9 +78,9 @@ class kegiatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $keg = kegiatan::findorfail($id);
-        $keg->update($request->all());
-        return redirect('data-kegiatan');
+        $kon = kondisi::findorfail($id);
+        $kon->update($request->all());
+        return redirect('data-kondisi');
     }
 
     /**
@@ -89,8 +91,8 @@ class kegiatanController extends Controller
      */
     public function destroy($id)
     {
-        $keg = kegiatan::findorfail($id);
-        $keg->delete();
+        $kon = kondisi::findorfail($id);
+        $kon >delete();
         return back();
     }
 }

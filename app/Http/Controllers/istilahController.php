@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\kegiatan;
 
 use Illuminate\Http\Request;
-
-class kegiatanController extends Controller
+use\App\istilah;
+use\App\kategori;
+class istilahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class kegiatanController extends Controller
      */
     public function index()
     {
-        $dtkegiatan = kegiatan::paginate(3);
-        return view('kegiatan.data-kegiatan',compact('dtkegiatan'));
+        $dtistilah = istilah::with('kategori')->latest()->paginate(5);
+        return view('istilah.data-istilah',compact('dtistilah'));
     }
 
     /**
@@ -25,7 +25,8 @@ class kegiatanController extends Controller
      */
     public function create()
     {
-        return view('kegiatan.create-kegiatan');
+        $ktt= kategori::all();
+        return view('istilah.create-istilah',compact('ktt'));
     }
 
     /**
@@ -36,12 +37,13 @@ class kegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        kegiatan::create([
-
-            'kegiatan' => $request ->kegiatan,
+        istilah::create([
+            'kategori_id' => $request->kategori_id,
+            'kode' => $request->kode,
+            'istilah' => $request->istilah,
 
         ]);
-        return redirect('data-kegiatan');
+        return redirect('data-istilah');
     }
 
     /**
@@ -63,8 +65,9 @@ class kegiatanController extends Controller
      */
     public function edit($id)
     {
-        $keg = kegiatan::findorfail($id);
-        return view('kegiatan.edit-kegiatan',compact('keg'));
+        $ktt = kategori::all();
+        $ist = istilah::with('kategori')->findorfail($id);
+        return view('istilah.edit-istilah',compact('ist','ktt'));
     }
 
     /**
@@ -76,9 +79,9 @@ class kegiatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $keg = kegiatan::findorfail($id);
-        $keg->update($request->all());
-        return redirect('data-kegiatan');
+        $ist = istilah::findorfail($id);
+        $ist->update($request->all());
+        return redirect('data-istilah');
     }
 
     /**
@@ -89,8 +92,8 @@ class kegiatanController extends Controller
      */
     public function destroy($id)
     {
-        $keg = kegiatan::findorfail($id);
-        $keg->delete();
+        $ist = istilah::findorfail($id);
+        $ist >delete();
         return back();
     }
 }

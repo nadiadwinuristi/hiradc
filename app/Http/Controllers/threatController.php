@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\kegiatan;
 
 use Illuminate\Http\Request;
-
-class kegiatanController extends Controller
+use App\threat;
+class threatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,8 @@ class kegiatanController extends Controller
      */
     public function index()
     {
-        $dtkegiatan = kegiatan::paginate(3);
-        return view('kegiatan.data-kegiatan',compact('dtkegiatan'));
+        $dtthreat = threat::paginate(20);
+        return view('threat.data-threat',compact('dtthreat'));
     }
 
     /**
@@ -25,7 +24,7 @@ class kegiatanController extends Controller
      */
     public function create()
     {
-        return view('kegiatan.create-kegiatan');
+        return view('threat.create-threat');
     }
 
     /**
@@ -36,12 +35,12 @@ class kegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        kegiatan::create([
+        threat::create([
 
-            'kegiatan' => $request ->kegiatan,
+            'nama' => $request ->nama,
 
         ]);
-        return redirect('data-kegiatan');
+        return redirect('data-threat');
     }
 
     /**
@@ -63,8 +62,8 @@ class kegiatanController extends Controller
      */
     public function edit($id)
     {
-        $keg = kegiatan::findorfail($id);
-        return view('kegiatan.edit-kegiatan',compact('keg'));
+        $thr = threat::findorfail($id);
+        return view('threat.edit-threat',compact('thr'));
     }
 
     /**
@@ -76,9 +75,9 @@ class kegiatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $keg = kegiatan::findorfail($id);
-        $keg->update($request->all());
-        return redirect('data-kegiatan');
+        $thr = threat::findorfail($id);
+        $thr->update($request->all());
+        return redirect('data-threat');
     }
 
     /**
@@ -89,8 +88,8 @@ class kegiatanController extends Controller
      */
     public function destroy($id)
     {
-        $keg = kegiatan::findorfail($id);
-        $keg->delete();
+        $thr = threat::findorfail($id);
+        $thr->delete();
         return back();
     }
 }

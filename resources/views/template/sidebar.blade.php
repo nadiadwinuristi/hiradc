@@ -44,15 +44,46 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route ('data-timk3lh') }}" class="nav-link active">
+                <a href="{{route ('data-timk3lh') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>DATA TIMK3</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route ('data-kegiatan') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>INPUT DATA </p>
+                  <p>KEGIATAN </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route ('data-kategori') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>KATEGORI </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route ('data-kemungkinan') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>KEMUNGKINAN </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route ('data-kondisi') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>KONDISI</p>
+                </a>
+              </li>
+              </li>
+              <li class="nav-item">
+                <a href="{{route ('data-istilah') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>ISTILAH</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route ('data-threat') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>THREAT</p>
                 </a>
               </li>
             </ul>

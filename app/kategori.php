@@ -9,5 +9,15 @@ class kategori extends Model
     protected $table = "kategori";
     protected $primaryKey = "id";
     protected $fillable = [
-        'kategori'];
+        'id','kategori'];
+    
+    public function kondisi()
+    {
+        return $this->hasMany(kondisi::class);
+    }
+
+    public function istilah()
+    {
+        return $this->hasMany(istilah::class);
+    }
 }

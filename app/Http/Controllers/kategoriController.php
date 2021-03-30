@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\kategori;
 class kategoriController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class kategoriController extends Controller
      */
     public function index()
     {
-        //
+        $dtkategori = kategori::paginate(3);
+        return view('kategori.data-kategori',compact('dtkategori'));
     }
 
     /**
@@ -23,7 +24,7 @@ class kategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori.create-kategori');
     }
 
     /**
@@ -34,7 +35,13 @@ class kategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        kategori::create([
+
+            'kategori' => $request ->kategori,
+
+        ]);
+        return redirect('data-kategori');
     }
 
     /**
@@ -56,7 +63,8 @@ class kategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kat = kategori::findorfail($id);
+        return view('kategori.edit-kategori',compact('kat'));
     }
 
     /**
@@ -68,7 +76,9 @@ class kategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kat = kategori::findorfail($id);
+        $kat->update($request->all());
+        return redirect('data-kategori');
     }
 
     /**
@@ -79,6 +89,8 @@ class kategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kat = kategori::findorfail($id);
+        $kat ->delete();
+        return back();
     }
 }
