@@ -45,7 +45,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
        <h3>EDIT THREAT</h3>
        </div>
            <div class="card-body">
-           <form action="{{url ('update-threat',$thr>id)}}" method="post">
+           <form action="{{url ('update-threat',$thr->id)}}" method="post">
           {{ csrf_field() }}
            <div class="form-group">
            <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama" value="{{ $thr->nama }}">
