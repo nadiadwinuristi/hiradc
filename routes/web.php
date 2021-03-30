@@ -73,6 +73,14 @@ Route::get('edit-threat/{id}','threatController@edit')->name('edit-threat');
 Route::post('update-threat/{id}','threatController@update')->name('update-threat');
 Route::get('delete-threat/{id}','threatController@destroy')->name('delete-threat');
 
+//vulnerability
+Route::get('data-vulnerability','vulnerabilityController@index')->name('data-vulnerability');
+Route::get('create-vulnerability','vulnerabilityController@create')->name('create-vulnerability');
+Route::post('simpan-vulnerability','vulnerabilityController@store')->name('simpan-vulnerability');
+Route::get('edit-vulnerability/{id}','vulnerabilityController@edit')->name('edit-vulnerability');
+Route::post('update-vulnerability/{id}','vulnerabilityController@update')->name('update-vulnerability');
+Route::get('delete-vulnerability/{id}','vulnerabilityController@destroy')->name('delete-vulnerability');
+
 
 
 

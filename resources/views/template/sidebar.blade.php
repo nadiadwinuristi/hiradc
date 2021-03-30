@@ -86,6 +86,12 @@
                   <p>THREAT</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route ('data-vulnerability') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>VULNERABILITY</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
