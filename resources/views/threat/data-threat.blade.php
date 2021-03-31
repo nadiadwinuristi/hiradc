@@ -50,6 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
            <table class="table table-bordered">
            <tr>
            <th>#</th>
+           <th>Istilah</th>
            <th>Nama</th>
            <th>Aksi</th>
            </tr>
@@ -57,6 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
            @foreach ($dtthreat as $item)
            <tr>
            <td>{{$loop->iteration }}</td>
+           <td>{{ $item->istilah->istilah }}</td>
            <td>{{ $item->nama}}</td>
            <td>
            <a href="{{url ('edit-threat',$item->id) }}"><i class="fas fa-edit"></i></a> | <a href="{{url ('delete-threat', $item->id) }}"><i class="fas fa-trash-alt" style="color:red"></i> </a>

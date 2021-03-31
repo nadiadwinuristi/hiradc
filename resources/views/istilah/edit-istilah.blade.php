@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <select class="form-control select2" style="width: 100%;" name="kategori_id" id="kategori_id">
           <option disabled value>Pilih Kategori</option>
           <option value="{{$ist->kategori_id}}">{{$ist->kategori->kategori}}</option>
-          @foreach ($ktg as $item)
+          @foreach ($ktt as $item)
           <option value="{{ $item->id }}">{{$item->kategori}}</option>
           
           @endforeach 

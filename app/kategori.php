@@ -20,4 +20,14 @@ class kategori extends Model
     {
         return $this->hasMany(istilah::class);
     }
+
+    public function vulnerability()
+    {
+        return $this->hasMany(vulnerability::class);
+    }
+
+    public function konsekuensi()
+    {
+        return $this->hasMany(konsekuensi::class);
+    }
 }

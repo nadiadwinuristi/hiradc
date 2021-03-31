@@ -42,24 +42,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
       <div class="card card-info card outline">
       <div class="class header">
-       <h3>EDIT THREAT</h3>
+       <h3>CREATE KONSEKUENSI</h3>
        </div>
            <div class="card-body">
-           <form action="{{url ('update-vulnerability',$vul->id)}}" method="post">
+           <form action="{{route ('simpan-konsekuensi')}}" method="post">
           {{ csrf_field() }}
           <select class="form-control select2" style="width: 100%;" name="kategori_id" id="kategori_id">
           <option disabled value>Pilih Kategori</option>
-          <option value="{{$vul->kategori_id}}">{{$vul->kategori->kategori}}</option>
-          @foreach ($kate as $item)
+          @foreach ($kgr as $item)
           <option value="{{ $item->id }}">{{$item->kategori}}</option>
-          
           @endforeach 
           </select>
+          </div>
            <div class="form-group">
-           <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama" value="{{ $vul->nama }}">
+           <input type="text" id="nilai" name="kode" class="form-control" placeholder="Kode">
            </div>
            <div class="form-group">
-           <button type="submit" class="btn btn-primary">Ubah data</button>
+           <input type="text" id="konsekuensi" name="kode" class="form-control" placeholder="Kode">
+           </div><div class="form-group">
+           <input type="text" id="financial" name="kode" class="form-control" placeholder="Kode">
+           </div><div class="form-group">
+           <input type="text" id="objective" name="kode" class="form-control" placeholder="Kode">
+           </div><div class="form-group">
+           <input type="text" id="legal" name="kode" class="form-control" placeholder="Kode">
+           </div><div class="form-group">
+           <input type="text" id="biaya" name="kode" class="form-control" placeholder="Kode">
+           </div><div class="form-group">
+           <input type="text" id="reputasi" name="kode" class="form-control" placeholder="Kode">
+           </div><div class="form-group">
+           <input type="text" id="cakupan" name="kode" class="form-control" placeholder="Kode">
+           </div><div class="form-group">
+           <input type="text" id="lama_pemulihan" name="kode" class="form-control" placeholder="Kode">
+           </div>
+           <div class="form-group">
+           <input type="text" id="lama_penyimpangan" name="istilah" class="form-control" placeholder="Istilah">
+           </div>
+           </div>
+           <div class="form-group">
+           <input type="text" id="product_image" name="istilah" class="form-control" placeholder="Istilah">
+           </div></div>
+           <div class="form-group">
+           <input type="text" id="dampak_sosial" name="istilah" class="form-control" placeholder="Istilah">
+           </div></div>
+           <div class="form-group">
+           <input type="text" id="istilah" name="istilah" class="form-control" placeholder="Istilah">
+           </div>
+           <div class="form-group">
+           <button type="submit" class="btn btn-success">Simpan Data</button>
            </div>
            </form>
            </div>

@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\vulnerability;
-use\App\kategori;
 
 use Illuminate\Http\Request;
-
-class vulnerabilityController extends Controller
+use\App\kategori;
+class konsekuensiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,8 @@ class vulnerabilityController extends Controller
      */
     public function index()
     {
-        $dtvulnerability = vulnerability::with('kategori')->latest()->paginate(20);
-        return view('vulnerability.data-vulnerability',compact('dtvulnerability'));
+        $dtkonsekuensi = konsekuensi::with('kategori')->latest()->paginate(5);
+        return view('konsekuensi.data-konsekuensi',compact('dtkonsekuensi'));
     }
 
     /**
@@ -26,8 +24,8 @@ class vulnerabilityController extends Controller
      */
     public function create()
     {
-        $kate = kategori::all();
-        return view('vulnerability.create-vulnerability',compact('kate'));
+        $kgr= kategori::all();
+        return view('istilah.create-istilah',compact('kgr'));
     }
 
     /**
@@ -38,12 +36,22 @@ class vulnerabilityController extends Controller
      */
     public function store(Request $request)
     {
-        vulnerability::create([
+        konsekuensi::create([
             'kategori_id' => $request->kategori_id,
-            'nama' => $request ->nama,
-
+            'nilai' => $request->nilai,
+            'konsekuensi' => $request->konsekuensi,
+            'financial'  => $request-> financial,
+            'objective' => $request->objective,
+            'legal' => $request-> legal,
+            'biaya' => $request-> biaya,
+            'reputasi' => $request-> reputasi,
+            'cakupan' => $request-> cakupan,
+            'lama_pemulihan' => $request-> lama_pemulihan,
+            'lama_penyimpangan' => $request-> lama_penyimpangan,
+            'product_image' => $request->product_image,
+            'dampak_sosial' => $request->dampak_sosial,
         ]);
-        return redirect('data-vulnerability');
+        return redirect('data-kategori');
     }
 
     /**
@@ -65,9 +73,9 @@ class vulnerabilityController extends Controller
      */
     public function edit($id)
     {
-        $kate = kategori::all();
-        $vul = vulnerability::with('kategori')->findorfail($id);
-        return view('vulnerability.edit-vulnerability',compact('vul','kate'));
+        $kgr = kategori::all();
+        $nsi = konsekuensi::with('kategori')->findorfail($id);
+        return view('istilah.edit-istilah',compact('nsi','kgr'));
     }
 
     /**
@@ -79,9 +87,9 @@ class vulnerabilityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $vul = vulnerability::findorfail($id);
-        $vul->update($request->all());
-        return redirect('data-vulnerability');
+        $nsi = konsekuensi::findorfail($id);
+        $nsi->update($request->all());
+        return redirect('data-konsekuensi');
     }
 
     /**
@@ -92,8 +100,8 @@ class vulnerabilityController extends Controller
      */
     public function destroy($id)
     {
-        $vul = vulnerability::findorfail($id);
-        $vul->delete();
+        $nsi = konsekuensi::findorfail($id);
+        $nsi >delete();
         return back();
     }
 }

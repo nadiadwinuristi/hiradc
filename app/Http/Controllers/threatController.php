@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\threat;
+use App\istilah;
+
 class threatController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class threatController extends Controller
      */
     public function index()
     {
-        $dtthreat = threat::paginate(20);
+        $dtthreat = threat::with('istilah')->latest()->paginate(25);
         return view('threat.data-threat',compact('dtthreat'));
     }
 
@@ -24,7 +26,8 @@ class threatController extends Controller
      */
     public function create()
     {
-        return view('threat.create-threat');
+        $istt= istilah::all();
+        return view('threat.create-threat',compact('istt'));
     }
 
     /**
@@ -36,7 +39,7 @@ class threatController extends Controller
     public function store(Request $request)
     {
         threat::create([
-
+            'istilah_id' => $request->istilah_id,
             'nama' => $request ->nama,
 
         ]);
@@ -61,9 +64,9 @@ class threatController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $thr = threat::findorfail($id);
-        return view('threat.edit-threat',compact('thr'));
+    {   $istt = istilah::all();
+        $thr = threat::with('istilah')->findorfail($id);
+        return view('threat.edit-threat',compact('thr','istt'));
     }
 
     /**

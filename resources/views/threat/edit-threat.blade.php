@@ -47,6 +47,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
            <div class="card-body">
            <form action="{{url ('update-threat',$thr->id)}}" method="post">
           {{ csrf_field() }}
+        <select class="form-control select2" style="width: 100%;" name="istilah_id" id="istilah_id">
+          <option disabled value>Pilih Istilah</option>
+          <option value="{{$thr->istilah_id}}">{{$thr->istilah->istilah}}</option>
+          @foreach ($istt as $item)
+          <option value="{{ $item->id }}">{{$item->istilah}}</option>
+          
+          @endforeach 
+          </select>
            <div class="form-group">
            <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama" value="{{ $thr->nama }}">
            </div>
