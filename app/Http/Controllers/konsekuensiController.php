@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use\App\kategori;
+use\App\konsekuensi;
 class konsekuensiController extends Controller
 {
     /**
@@ -25,7 +26,7 @@ class konsekuensiController extends Controller
     public function create()
     {
         $kgr= kategori::all();
-        return view('istilah.create-istilah',compact('kgr'));
+        return view('konsekuensi.create-konsekuensi',compact('kgr'));
     }
 
     /**
@@ -51,7 +52,7 @@ class konsekuensiController extends Controller
             'product_image' => $request->product_image,
             'dampak_sosial' => $request->dampak_sosial,
         ]);
-        return redirect('data-kategori');
+        return redirect('data-konsekuensi');
     }
 
     /**
@@ -75,7 +76,7 @@ class konsekuensiController extends Controller
     {
         $kgr = kategori::all();
         $nsi = konsekuensi::with('kategori')->findorfail($id);
-        return view('istilah.edit-istilah',compact('nsi','kgr'));
+        return view('konsekuensi.edit-konsekuensi',compact('nsi','kgr'));
     }
 
     /**

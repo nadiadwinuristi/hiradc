@@ -81,6 +81,23 @@ Route::get('edit-vulnerability/{id}','vulnerabilityController@edit')->name('edit
 Route::post('update-vulnerability/{id}','vulnerabilityController@update')->name('update-vulnerability');
 Route::get('delete-vulnerability/{id}','vulnerabilityController@destroy')->name('delete-vulnerability');
 
+//konsekuensi
+Route::get('data-konsekuensi','konsekuensiController@index')->name('data-konsekuensi');
+Route::get('create-konsekuensi','konsekuensiController@create')->name('create-konsekuensi');
+Route::post('simpan-konsekuensi','konsekuensiController@store')->name('simpan-konsekuensi');
+Route::get('edit-konsekuensi/{id}','konsekuensiController@edit')->name('edit-konsekuensi');
+Route::post('update-konsekuensi/{id}','konsekuensiController@update')->name('update-konsekuensi');
+Route::get('delete-konsekuensi/{id}','konsekuensiController@destroy')->name('delete-konsekuensi');
+
+//register
+Route::get('data-register','registerController@index')->name('data-register');
+Route::get('create-register','registerController@create')->name('create-register');
+Route::post('simpan-register','registerController@store')->name('simpan-register');
+Route::get('edit-register/{id}','registerController@edit')->name('edit-register');
+Route::post('update-register/{id}','registerController@update')->name('update-register');
+Route::get('delete-register/{id}','registerController@destroy')->name('delete-register');
+
+
 
 
 

@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">KONSEKUENSI</h1>
+            <h1 class="m-0">REGISTER</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -43,54 +43,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="card card-info card outline">
         <div class="card-header">
           <div class="card-tools">
-          <a href="{{route ('create-konsekuensi')}}" class="btn btn-success"> Tambah data <i class="fas fa-plus-square"></i></a>
+          <a href="{{route ('create-register')}}" class="btn btn-success"> Tambah data <i class="fas fa-plus-square"></i></a>
            </div>
            </div>
            <div class="card-body">
            <table class="table table-bordered">
            <tr>
            <th>#</th>
-           <th>Kategori</th>
-           <th>Nilai</th>
+           <th>Unit Kerja</th>
+           <th>kegiatan</th>
+           <th>Lokasi</th>
+           <th>Kondisi</th>
+           <th>Threat</th>
+           <th>Pengedalian</th>
+           <th>Kemungkinan</th>
            <th>Konsekuensi</th>
-           <th>Financial</th>
-           <th>Objective</th>
-           <th>Legal</th>
-           <th>Biaya</th>
-           <th>Reputasi</th>
-           <th>Cakupan</th>
-           <th>Lama Pemulihan</th>
-           <th>Lama Penyimpangan</th>
-           <th>Product Image</th>
-           <th>Dampak Sosial</th>
-           <th>Aksi</th>
+           <th>Tingkat Resiko</th>
+           <th>Status Regulasi</th>
+           <th>Aspek Lingkungan</th>
+           <th>Peluang</th>
+           <th>Resiko</th>
+           <th>Resiko Ditoleransi</th>
+           <th>Cakupan Resiko</th>
+           <th>Status Program</th>
+           <th>Program</th>
            </tr>
            
-           @foreach ($dtkonsekuensi as $item)
+           @foreach ($dtregister as $item)
            <tr>
            <td>{{$loop->iteration }}</td>
-           <td>{{$item->kategori->kategori}}</td>
-           <td>{{$item->nilai}}</td>
-           <td>{{ $item->konsekuensi}}</td>
-           <td>{{ $item->financial}}</td>
-           <td>{{$item->objective}}</td>
-           <td>{{$item->legal}}</td>
-           <td>{{$item->biaya}}</td>
-           <td>{{$item->reputasi}}</td>
-           <td>{{$item->cakupan}}</td>
-           <td>{{$item->lama_pemulihan}}</td>
-           <td>{{$item->lama_penyimpangan}}</td>
-           <td>{{$item->product_image}}</td>
-           <td>{{$item->dampak_sosial}}</td>
+           <td>{{$item->unit_kerja}}</td>
+           <td>{{$item->kegiatan->kegiatan}}</td>
+           <td>{{ $item->lokasi}}</td>
+           <td>{{ $item->kondisi->kondisi}}</td>
+           <td>{{$item->threat->threat}}</td>
+           <td>{{$item->pengendalian}}</td>
+           <td>{{$item->kemungkinan->kemungkinan_id}}</td>
+           <td>{{$item->konsekuensi->konsekuensi_id}}</td>
+           <td>{{$item->tingkat_resiko}}</td>
+           <td>{{$item->status_regulasi}}</td>
+           <td>{{$item->aspek_lingkungan}}</td>
+           <td>{{$item->peluang}}</td>
+           <td>{{$item->resiko}}</td>
+           <td>{{$item->resiko_ditoleransi}}</td>
+           <td>{{$item->cakupan_resiko}}</td>
+           <td>{{$item->status_Program}}</td>
+           <td>{{$item->program}}</td>
            <td>
-           <a href="{{url ('edit-konsekuensi',$item->id) }}"><i class="fas fa-edit"></i></a> | <a href="{{url ('delete-konsekuensi', $item->id) }}"><i class="fas fa-trash-alt" style="color:red"></i> </a>
+           <a href="{{url ('edit-register',$item->id) }}"><i class="fas fa-edit"></i></a> | <a href="{{url ('delete-register', $item->id) }}"><i class="fas fa-trash-alt" style="color:red"></i> </a>
            </td>
            </tr>
            @endforeach
            </table>
            </div>
            <div class="card-footer">
-           {{$dtkonsekuensi->links()}}
+           {{$dtregister->links()}}
            </div>
            <div>
              

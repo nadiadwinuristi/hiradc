@@ -42,25 +42,56 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
       <div class="card card-info card outline">
       <div class="class header">
-       <h3>EDIT KONSEKUENSI</h3>
+       <h3>EDIT REGISTER</h3>
        </div>
            <div class="card-body">
-           <form action="{{url ('update-konsekuensi',$nsi->id)}}" method="post">
+           <form action="{{url ('update-register',$nsi->id)}}" method="post">
           {{ csrf_field() }}
 
-          <select class="form-control select2" style="width: 100%;" name="kategori_id" id="kategori_id">
-          <option disabled value>Pilih Konsekuensi</option>
-          <option value="{{$nsi->kategori_id}}">{{$nsi->kategori->kategori}}</option>
+          <div class="form-group">
+           <input type="text" id="unit_kerja" name="unit_kerja" class="form-control" placeholder="unit kerja" value="{{$nsi->unit_kerja}}">
+           </div>
+           <select class="form-control select2" style="width: 100%;" name="kegiatan_id" id="kegiatan_id">
+          <option disabled value>Pilih Kegiatan</option>
+          <option value="{{$nsi->kegiatan_id}}">{{$nsi->kegiatan->kegiatan}}</option>
           @foreach ($kgr as $item)
-          <option value="{{ $item->id }}">{{$item->kategori}}</option>
+          <option value="{{ $item->id }}">{{$item->kegiatan}}</option>
           @endforeach 
           </select>
           <div class="form-group">
-           <input type="text" id="nilai" name="nilai" class="form-control" placeholder="nilai" value="{{$nsi->nilai}}">
+           <input type="text" id="lokasi" name="lokasi" class="form-control" placeholder="lokasi" value="{{$nsi->lokasi}}">
            </div>
+           <select class="form-control select2" style="width: 100%;" name="kondisi_id" id="kondisi_id">
+          <option disabled value>Pilih Kondisi</option>
+          <option value="{{$nsi->kondisi_id}}">{{$nsi->kondisi->kondisi}}</option>
+          @foreach ($kgr as $item)
+          <option value="{{ $item->id }}">{{$item->kondisi}}</option>
+          @endforeach 
+          </select>
+          <select class="form-control select2" style="width: 100%;" name="threat_id" id="threat_id">
+          <option disabled value>Pilih Threat</option>
+          <option value="{{$nsi->threat_id}}">{{$nsi->threat->threat}}</option>
+          @foreach ($kgr as $item)
+          <option value="{{ $item->id }}">{{$item->threat}}</option>
+          @endforeach 
+          </select>
            <div class="form-group">
-           <input type="text" id="konsekuensi" name="konsekuensi" class="form-control" placeholder="konsekuensi" value= "{{$nsi->konsekuensi}}">
+           <input type="text" id="pengendalian" name="pengendalian" class="form-control" placeholder="pengendalian" value= "{{$nsi->pengendalian}}">
            </div>
+           <select class="form-control select2" style="width: 100%;" name="kemungkinan_id" id="kemungkinan_id">
+          <option disabled value>Pilih Kemungkinan</option>
+          <option value="{{$nsi->kemungkinan_id}}">{{$nsi->kemungkinan->kemungkinan}}</option>
+          @foreach ($kgr as $item)
+          <option value="{{ $item->id }}">{{$item->kemungkinan}}</option>
+          @endforeach 
+          </select>
+          <select class="form-control select2" style="width: 100%;" name="kemungkinan_id" id="kemungkinan_id">
+          <option disabled value>Pilih Konsekuensi</option>
+          <option value="{{$nsi->konsekuensi_id}}">{{$nsi->konsekuensi->konsekuensi}}</option>
+          @foreach ($kgr as $item)
+          <option value="{{ $item->id }}">{{$item->konsekuensi}}</option>
+          @endforeach 
+          </select>
            <div class="form-group">
            <input type="text" id="financial" name="financial" class="form-control" placeholder="financial" value= "{{$nsi-> financial}}">
            </div>

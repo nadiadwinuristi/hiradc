@@ -92,6 +92,18 @@
                   <p>VULNERABILITY</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route ('data-konsekuensi') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>KONSEKUENSI</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route ('data-register') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>REGISTER</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
